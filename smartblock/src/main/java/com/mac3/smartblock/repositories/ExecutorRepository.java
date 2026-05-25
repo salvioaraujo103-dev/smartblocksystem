@@ -1,0 +1,11 @@
+package com.mac3.smartblock.repositories;
+
+import com.mac3.smartblock.models.ExecutorModel;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.UUID;
+
+@Repository
+public interface ExecutorRepository extends JpaRepository<ExecutorModel, UUID> {
+}
