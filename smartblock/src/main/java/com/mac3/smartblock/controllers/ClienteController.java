@@ -22,7 +22,7 @@ public class ClienteController {
 
 
 
-    @PostMapping("/smartblock/clientes")
+    @PostMapping("/smartblock/clientes/")
   public ResponseEntity<ClienteModel> saveCliente(@RequestBody ClienteRecordDto clienteRecordDto) {
 
       return ResponseEntity.status(HttpStatus.CREATED).body(clienteService.saveCliente(clienteRecordDto));

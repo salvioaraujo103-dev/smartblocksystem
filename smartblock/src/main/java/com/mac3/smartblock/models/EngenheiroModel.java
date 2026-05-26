@@ -34,6 +34,9 @@ public class EngenheiroModel implements Serializable {
    @Column
     private String email;
 
+   @Column(nullable = false)
+   private String crea;
+
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "engenheiro", fetch = FetchType.LAZY)
     private Set<ObraModel> obras = new HashSet<ObraModel>();
@@ -84,5 +87,13 @@ public class EngenheiroModel implements Serializable {
 
     public void setObras(Set<ObraModel> obras) {
         this.obras = obras;
+    }
+
+    public String getCrea() {
+        return crea;
+    }
+
+    public void setCrea(String crea) {
+        this.crea = crea;
     }
 }
