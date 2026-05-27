@@ -25,7 +25,7 @@ public class EtapaModel implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "obra_id")
-    private ObraModel obraEtapa;
+    private ObraModel obraModel;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "etapa", fetch = FetchType.LAZY)
@@ -58,12 +58,12 @@ public class EtapaModel implements Serializable {
         this.ordemExecucao = ordemExecucao;
     }
 
-    public ObraModel getObraEtapa() {
-        return obraEtapa;
+    public ObraModel getObraModel() {
+        return obraModel;
     }
 
-    public void setObraEtapa(ObraModel obra) {
-        this.obraEtapa = obra;
+    public void setObraModel(ObraModel obra) {
+        this.obraModel = obra;
     }
 
     public Set<GastoModel> getGastos() {

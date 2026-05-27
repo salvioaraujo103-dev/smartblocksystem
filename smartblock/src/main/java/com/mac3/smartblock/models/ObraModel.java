@@ -40,7 +40,7 @@ public class ObraModel implements Serializable {
 
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "obraEtapa", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "obraModel", fetch = FetchType.LAZY)
     private Set<EtapaModel> etapas = new HashSet<>();
 
     public UUID getId() {
