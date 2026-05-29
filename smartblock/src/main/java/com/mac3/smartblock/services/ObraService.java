@@ -2,6 +2,7 @@ package com.mac3.smartblock.services;
 
 import com.mac3.smartblock.dtos.EtapaRecordDto;
 import com.mac3.smartblock.dtos.ObraRecordDto;
+import com.mac3.smartblock.models.EtapaModel;
 import com.mac3.smartblock.models.ObraModel;
 import com.mac3.smartblock.repositories.*;
 import jakarta.transaction.Transactional;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -89,6 +91,34 @@ public class ObraService {
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Obra not found");
     }
+
+    @Transactional
+    public ResponseEntity<Object> addEtapa(UUID idObra, UUID idEtapa ) {
+        Optional<ObraModel> obraModel = obraRepository.findById(idObra);
+        if( obraModel.isPresent() ) {
+            var obra = obraModel.get();
+            Set<EtapaModel> etapas = obra.getEtapas();
+            etapas.add(etapaRepository.findById(idEtapa).get());
+            obra.setEtapas(etapas);
+            return ResponseEntity.status(HttpStatus.OK).body(obraRepository.save(obra));
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Obra not found");
+    }
+
+    @Transactional
+    public ResponseEntity<Object> removeEtapa(UUID idObra, UUID idEtapa ) {
+        Optional<ObraModel> obraModel = obraRepository.findById(idObra);
+        if( obraModel.isPresent() ) {
+            var obra = obraModel.get();
+            Set<EtapaModel> etapas = obra.getEtapas();
+            etapas.remove(etapaRepository.findById(idEtapa).get());
+            obra.setEtapas(etapas);
+            return ResponseEntity.status(HttpStatus.OK).body(obraRepository.save(obra));
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Obra not found");
+    }
+
+
 
 
 

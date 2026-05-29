@@ -43,4 +43,6 @@ public class ObraController {
     public ResponseEntity<Object> deleteObraById(@RequestBody @PathVariable (value = "id") UUID id) {
         return obraService.deleteObra(id);
     }
+
+
 }

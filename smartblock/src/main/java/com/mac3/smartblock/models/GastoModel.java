@@ -43,6 +43,7 @@ public class GastoModel implements Serializable {
     )
     private Set<ItemModel> itens = new HashSet<>();
 
+
     public UUID getId() {
         return id;
     }
