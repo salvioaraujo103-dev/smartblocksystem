@@ -29,6 +29,9 @@ public class EtapaController {
         return etapaService.getAllEtapas();
     }
 
+
+
+
     @GetMapping("/etapas/{id}")
     public ResponseEntity<Object> findEtapaById(@RequestBody @PathVariable(value = "id") UUID id) {
         return ResponseEntity.status(HttpStatus.OK).body(etapaService.getEtapaById(id));

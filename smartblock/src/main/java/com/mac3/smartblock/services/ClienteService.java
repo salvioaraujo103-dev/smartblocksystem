@@ -35,6 +35,7 @@ public class ClienteService {
         clienteModel.setCpf(clienteRecordDto.cpf());
         clienteModel.setCnpj(clienteRecordDto.cnpj());
         clienteModel.setCelular(clienteRecordDto.celular());
+        clienteModel.setObrasCli(obraRepository.findAllById(clienteRecordDto.obrasIds()).stream().collect(Collectors.toSet()) );
 
         return clienteRepository.save(clienteModel);
     }
